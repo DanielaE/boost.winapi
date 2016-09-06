@@ -17,6 +17,11 @@
 #pragma once
 #endif
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4201)
+#endif
+
 #if !defined( BOOST_USE_WINDOWS_H )
 extern "C" {
 struct _SYSTEM_INFO;
@@ -69,5 +74,9 @@ BOOST_FORCEINLINE VOID_ GetNativeSystemInfo(LPSYSTEM_INFO_ lpSystemInfo)
 }
 }
 }
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_DETAIL_WINAPI_SYSTEM_HPP
